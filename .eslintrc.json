@@ -1,0 +1,30 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "no-console": "warn",
+    "no-duplicate-imports": "error",
+		"no-unused-vars": "warn",
+    "import/order": [
+			"error",
+			{
+				"groups": [
+					"external",
+					"builtin",
+					"internal",
+					"parent",
+					"sibling",
+					"index",
+					"object",
+					"type"
+				],
+				"alphabetize": {
+					"order": "asc",
+					"caseInsensitive": true
+				},
+				"newlines-between": "always"
+			}
+		]
+  }
+}

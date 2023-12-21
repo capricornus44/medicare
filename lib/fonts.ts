@@ -1,0 +1,9 @@
+import { Poppins } from 'next/font/google'
+
+export const poppins = Poppins({
+	weight: ['400', '700'],
+	style: 'normal',
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--poppins-font'
+})
