@@ -1,9 +1,13 @@
+import RegisterForm from '@/components/register-form'
+
 export default function Register() {
 	return (
-		<main>
-			<section>
-				<h1 className='text-2xl font-bold'>Register page</h1>
-			</section>
-		</main>
+		<section className='container flex h-full flex-col justify-center'>
+			<h1 className='mb-4 text-pretty text-center text-3xl font-extrabold'>
+				Welcome to MediCare
+			</h1>
+
+			<RegisterForm />
+		</section>
 	)
 }
