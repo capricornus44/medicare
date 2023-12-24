@@ -9,7 +9,6 @@ export function middleware(request: NextRequest) {
   const cookies = request.cookies as RequestCookies
   
   if (!cookies.authenticated) {
-    console.log("first")
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
