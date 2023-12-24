@@ -1,24 +1,29 @@
-import { sql } from '@vercel/postgres'
-import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
+
+import { prisma } from '@/lib/prisma'
+import { validatePassword } from '@/lib/utils'
 
 export async function POST(request: Request) {
 	const { email, password } = await request.json()
 
 	try {
-		const { rows: users } =
-			await sql`SELECT * FROM Users WHERE email = ${email} AND password = ${password};`
+		const user = await prisma.user.findUnique({ where: { email } })
 
-		if (users.length === 0) {
+		if (!user) {
 			return NextResponse.json(
-				{ error: 'Invalid credentials', ok: false },
-				{ status: 401 }
+				{ error: 'User not found', ok: false },
+				{ status: 400 }
 			)
 		}
 
-		cookies().set('access-token', 'my-token', {
-			maxAge: 300
-		})
+		const passwordMatch = await validatePassword(password, user.password)
+
+		if (!passwordMatch) {
+			return NextResponse.json(
+				{ error: 'Incorrect password', ok: false },
+				{ status: 400 }
+			)
+		}
 
 		return NextResponse.json(
 			{ message: 'User has been authenticated successfully', ok: true },
