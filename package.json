@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "pnpm prisma && next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "next lint --fix"
+    "format": "next lint --fix",
+    "prisma": "prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
