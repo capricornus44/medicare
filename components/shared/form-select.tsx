@@ -17,7 +17,7 @@ const FormSelect = ({ label, register, error, options }: FormSelectProps) => {
 			<select
 				{...register}
 				className={cn(
-					'peer appearance-none rounded-lg border border-gray-500 bg-white px-4 py-2 text-base font-normal focus:border-transparent focus:outline-none focus:ring focus:ring-inset focus:ring-indigo-500 dark:bg-slate-800',
+					'peer mt-2 appearance-none rounded-lg border border-gray-500 bg-white px-4 py-2 text-base font-normal focus:border-transparent focus:outline-none focus:ring focus:ring-inset focus:ring-indigo-500 dark:bg-slate-800',
 					{ 'border-transparent focus:ring-red-500': error }
 				)}
 			>

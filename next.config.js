@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['jtr6vvwzqvphjthn.public.blob.vercel-storage.com'],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "jtr6vvwzqvphjthn.public.blob.vercel-storage.com"
+      }
+    ]
   } 
 }
 
