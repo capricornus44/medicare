@@ -19,3 +19,16 @@ export async function validatePassword(
 	const passwordMatch = await bcrypt.compare(inputPassword, hashedPassword)
 	return passwordMatch
 }
+
+export const excludeFields = (
+	object: Record<string, any>,
+	keys: string[]
+): Record<string, any> => {
+	const updatedObject = { ...object }
+
+	for (const key of keys) {
+		delete updatedObject[key]
+	}
+
+	return updatedObject
+}

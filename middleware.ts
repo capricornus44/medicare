@@ -1,17 +1,17 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { cookies as nextCookies } from 'next/headers'
 
-interface RequestCookies {
-  authenticated?: string;
-}
- 
+
 export function middleware(request: NextRequest) {
-  const cookies = request.cookies as RequestCookies
+  const cookies = nextCookies()
+  const accessToken = cookies.get('accessToken')
   
-  if (!cookies.authenticated) {
+    
+  if (!accessToken) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
-
+ 
   return NextResponse.next();
 }
  
