@@ -2,22 +2,22 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { RotateCwIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 
 import {
 	restorePasswordStep2Data,
 	restorePasswordStep2Schema
 } from '@/lib/validation/restore-password-schema'
 
-import FormInput from './shared/form-input'
+import OtpInput from './otp-input'
 import { Button } from './ui/button'
 
 const SendOtpForm = () => {
 	const { push } = useRouter()
 	const {
-		register,
 		handleSubmit,
-		formState: { errors, isSubmitting }
+		control,
+		formState: { isSubmitting }
 	} = useForm<restorePasswordStep2Data>({
 		resolver: zodResolver(restorePasswordStep2Schema)
 	})
@@ -36,12 +36,17 @@ const SendOtpForm = () => {
 				We emailed a confirmation code with 4 numbers to user.email@gmail.com
 			</p>
 
-			<FormInput
-				type='text'
-				label='OTP'
-				register={register('otp')}
-				error={errors.otp?.message}
-				placeholder='Enter OTP'
+			<Controller
+				name='otp'
+				control={control}
+				defaultValue=''
+				render={({ field, formState }) => (
+					<OtpInput
+						code={field.value}
+						onChange={otp => field.onChange(otp)}
+						error={formState.errors.otp?.message}
+					/>
+				)}
 			/>
 
 			<Button

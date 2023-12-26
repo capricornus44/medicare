@@ -75,3 +75,16 @@
   }
 }
 
+@layer utilities {
+  .otp {
+    width: 100%!important;
+    @apply rounded-lg border border-gray-500 text-center text-2xl dark:bg-slate-800 focus:border-transparent focus:outline-none focus:ring focus:ring-inset focus:ring-indigo-500 h-24
+
+  }
+
+  @media (min-width: 481px) {
+    .otp {
+      width: 74px !important
+    }
+  }
+}
