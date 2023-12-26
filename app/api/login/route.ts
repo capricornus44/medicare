@@ -2,9 +2,9 @@ import { SignJWT } from 'jose'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 
-import { getJWTSecret } from '@/lib/auth'
+import { getJWTSecret, validatePassword } from '@/lib/auth'
 import prisma from '@/lib/prisma'
-import { excludeFields, validatePassword } from '@/lib/utils'
+import { excludeFields } from '@/lib/utils'
 
 export async function POST(request: Request) {
 	const { email, password } = await request.json()
