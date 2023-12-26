@@ -44,6 +44,7 @@ const FormInput = ({
 
 				{type === 'password' && (
 					<Button
+						type='button'
 						onClick={toggleVisible}
 						variant='ghost'
 						size='icon'

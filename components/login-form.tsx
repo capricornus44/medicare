@@ -44,7 +44,7 @@ const LoginForm = () => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={handleSubmit(onSubmit)} className='grid'>
 			<div className='mb-2 grid gap-4'>
 				<FormInput
 					type='email'
@@ -63,8 +63,8 @@ const LoginForm = () => {
 			</div>
 
 			<Link
-				href='/restore-password'
-				className='mb-4 flex justify-end text-sm text-indigo-500'
+				href='/restore-password?step=1'
+				className='mb-4 justify-self-end text-sm text-indigo-500'
 			>
 				Forgot your password?
 			</Link>

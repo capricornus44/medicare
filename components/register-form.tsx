@@ -47,7 +47,7 @@ const RegisterForm = () => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={handleSubmit(onSubmit)} className='grid'>
 			<div className='mb-4 grid gap-4'>
 				<FormInput
 					label='Name'
@@ -94,7 +94,7 @@ const RegisterForm = () => {
 				{isSubmitting ? 'Submitting...' : 'Register'}
 			</Button>
 
-			<Link href='/login' className='flex justify-end py-2 text-sm'>
+			<Link href='/login' className='justify-self-end py-2 text-sm'>
 				Back to
 				<span className='ml-1 font-semibold text-indigo-500'>Login</span>
 			</Link>
